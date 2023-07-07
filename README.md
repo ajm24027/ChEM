@@ -38,7 +38,7 @@ Leveraging OpenAI's Chat API, Axios, and a MERN stack, ChEM will take user input
 
 - Authenticate yourself.
 - Start a new session with various Ghosts.
-- Leave you session? Sessions are saved for you.
+- Leave your session? Sessions are saved for you for you to return to.
 - Delete a session that got a little cringy.
 
 ---
