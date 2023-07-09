@@ -2,9 +2,12 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 
+require('dotenv').config()
+
 const AuthRouter = require('./routes/AuthRouter')
 const GhostRouter = require('./routes/GhostRouter')
 const SessionRouter = require('./routes/SessionRouter')
+const InteractionRouter = require('./routes/InteractionRouter')
 
 const PORT = process.env.PORT || 3001
 
@@ -20,6 +23,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/auth', AuthRouter)
 app.use('/ghost', GhostRouter)
 app.use('/session', SessionRouter)
+app.use('/interaction', InteractionRouter)
 
 app.use('/', (req, res) => {
   res.send(`Connected!`)
