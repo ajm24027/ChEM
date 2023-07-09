@@ -56,9 +56,23 @@ const DeleteSession = async (req, res) => {
   }
 }
 
+const UpdateSession = async (req, res) => {
+  try {
+    const session = await Session.findByIdAndUpdate(
+      req.params.session_id,
+      req.body,
+      { new: true }
+    )
+    res.send(session)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   GetSessions,
   ShowSession,
   CreateSession,
-  DeleteSession
+  DeleteSession,
+  UpdateSession
 }
