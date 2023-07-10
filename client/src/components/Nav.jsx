@@ -49,7 +49,7 @@ export default function Nav({ user, handleLogOut }) {
       </Button>
 
       <Button color="inherit">
-        <Link href="/" underline="none">
+        <Link href="/register" underline="none">
           SignUp
         </Link>
       </Button>
