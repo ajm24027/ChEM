@@ -7,7 +7,6 @@ import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 
 export default function Nav({ user, handleLogOut }) {
-  console.log(user)
   let userOptions
 
   if (user) {
@@ -20,7 +19,7 @@ export default function Nav({ user, handleLogOut }) {
         </Button>
 
         <Button color="inherit">
-          <Link href="/" underline="none">
+          <Link href="/lobby" underline="none">
             Lobby
           </Link>
         </Button>
@@ -61,7 +60,7 @@ export default function Nav({ user, handleLogOut }) {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            Chattus Ex Machina
           </Typography>
           {user ? userOptions : publicOptions}
         </Toolbar>

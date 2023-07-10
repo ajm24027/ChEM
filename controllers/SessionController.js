@@ -1,8 +1,8 @@
-const { Session, Ghost, Interaction } = require('../models')
+const { Session, Ghost, Interaction, User } = require('../models')
 
 const GetSessions = async (req, res) => {
   try {
-    const sessions = await Session.find({})
+    const sessions = await Session.find({ owner: req.params.user_id })
     res.send(sessions)
   } catch (error) {
     throw error
@@ -24,18 +24,19 @@ const ShowSession = async (req, res) => {
 const CreateSession = async (req, res) => {
   try {
     const date = new Date().toLocaleString().slice(0, 8)
-    const ghost = await Ghost.findById(req.params.ghost_id)
+    const foundGhost = await Ghost.findById(req.body.ghost._id)
+    const foundUser = await User.findById(req.body.user.id)
 
     const newSession = new Session({
-      name: `${ghost.name}-${date}`,
-      owner: '64a8bd55c23afd37429d093d',
-      ghost: req.params.ghost_id
+      name: `${foundGhost.name}-${date}`,
+      owner: foundUser._id,
+      ghost: foundGhost._id
     })
 
-    ghost.sessions.push(newSession._id)
+    foundGhost.sessions.push(newSession._id)
 
     await newSession.save()
-    await ghost.save()
+    await foundGhost.save()
     res.send(newSession)
   } catch (error) {
     throw error
