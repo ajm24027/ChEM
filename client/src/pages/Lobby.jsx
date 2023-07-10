@@ -10,9 +10,11 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
 import { Container } from '@mui/material'
+import Avatar from '@mui/material/Avatar'
+import Chip from '@mui/material/Chip'
+import Stack from '@mui/material/Stack'
 
 const Lobby = ({ user }) => {
-  console.log(user)
   let navigate = useNavigate()
 
   const [ghosts, setGhosts] = useState([])
@@ -28,7 +30,7 @@ const Lobby = ({ user }) => {
       setGhosts(data)
     }
     const handleSessions = async () => {
-      const data = await RenderSessions(user)
+      const data = await RenderSessions(user.id)
       console.log(data)
       setUserSessions(data)
     }
@@ -56,14 +58,17 @@ const Lobby = ({ user }) => {
           ))}
         </Grid>
         <Divider sx={{ marginTop: 4, marginBottom: 4 }}>Your Sessions</Divider>
-        {userSessions.map((session) => (
-          <h3>{session.name}</h3>
-        ))}
-        <Grid
-          container
-          rowSpacing={{ xs: 1, sm: 2, md: 3 }}
-          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        ></Grid>
+        <Stack direction="row" spacing={2}>
+          {userSessions.map((session) => (
+            <Chip
+              avatar={<Avatar>M</Avatar>}
+              label={session.name}
+              variant="outlined"
+              color="secondary"
+              key={session.name}
+            />
+          ))}
+        </Stack>
       </Container>
     </>
   ) : (

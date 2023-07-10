@@ -1,6 +1,6 @@
 const { Session, Ghost, Interaction, User } = require('../models')
 
-const GetSessions = async (req, res) => {
+const GetUsersSessions = async (req, res) => {
   try {
     const sessions = await Session.find({ owner: req.params.user_id })
     res.send(sessions)
@@ -71,7 +71,7 @@ const UpdateSession = async (req, res) => {
 }
 
 module.exports = {
-  GetSessions,
+  GetUsersSessions,
   ShowSession,
   CreateSession,
   DeleteSession,

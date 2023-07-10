@@ -11,8 +11,7 @@ export const ConjureSession = async (data) => {
 
 export const RenderSessions = async (data) => {
   try {
-    console.log(data)
-    const res = await Client.get(`/session/${data.id}/userSessions`)
+    const res = await Client.get(`/session/${data}/userSessions`)
     return res.data
   } catch (error) {
     throw error
