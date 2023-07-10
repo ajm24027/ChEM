@@ -23,7 +23,7 @@ const darkTheme = createTheme({
   }
 })
 
-function Copyright(props) {
+function Portfolio(props) {
   return (
     <Typography
       variant="body2"
@@ -128,7 +128,7 @@ export default function SignIn({ setUser }) {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Portfolio sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   )
