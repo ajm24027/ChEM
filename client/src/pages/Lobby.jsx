@@ -54,7 +54,7 @@ const Lobby = ({ user }) => {
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         >
           {ghosts.map((ghost) => (
-            <Grid item xs={2} sm={4} md={4} key={ghost.name}>
+            <Grid item xs={12} sm={6} md={2} key={ghost.name}>
               <GhostCard
                 user={user}
                 ghost={ghost}
