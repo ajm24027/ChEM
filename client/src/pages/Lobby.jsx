@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { ConjureGhosts } from '../services/GhostSevices'
-import { RenderSessions } from '../services/SessionServices'
+import { RenderSessions, deleteSession } from '../services/SessionServices'
 import { useNavigate } from 'react-router-dom'
-import { GhostCard } from '../components'
+import { GhostCard, SessionChip } from '../components'
+import { Link } from 'react-router-dom'
 
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -10,8 +11,6 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
 import { Container } from '@mui/material'
-import Avatar from '@mui/material/Avatar'
-import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
 
 const Lobby = ({ user }) => {
@@ -20,8 +19,15 @@ const Lobby = ({ user }) => {
   const [ghosts, setGhosts] = useState([])
   const [userSessions, setUserSessions] = useState([])
 
-  const updateUserSession = (newSession) => {
-    setUserSessions([...userSessions], newSession)
+  const addToUserSession = (newSession) => {
+    setUserSessions((prevSessions) => [...prevSessions, newSession])
+  }
+
+  const removeSession = async (deletedSession) => {
+    await deleteSession(deletedSession)
+    setUserSessions((prevSessions) =>
+      prevSessions.filter((userSession) => userSession !== deletedSession)
+    )
   }
 
   useEffect(() => {
@@ -29,14 +35,14 @@ const Lobby = ({ user }) => {
       const data = await ConjureGhosts()
       setGhosts(data)
     }
+
     const handleSessions = async () => {
       const data = await RenderSessions(user.id)
-      console.log(data)
       setUserSessions(data)
     }
     handleGhosts()
     handleSessions()
-  }, [userSessions.id])
+  }, [])
 
   return user ? (
     <>
@@ -52,20 +58,18 @@ const Lobby = ({ user }) => {
               <GhostCard
                 user={user}
                 ghost={ghost}
-                updateUserSession={updateUserSession}
+                addUserSession={addToUserSession}
               />
             </Grid>
           ))}
         </Grid>
         <Divider sx={{ marginTop: 4, marginBottom: 4 }}>Your Sessions</Divider>
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={2} useFlexGap flexWrap="wrap">
           {userSessions.map((session) => (
-            <Chip
-              avatar={<Avatar>M</Avatar>}
-              label={session.name}
-              variant="outlined"
-              color="secondary"
-              key={session.name}
+            <SessionChip
+              key={session._id}
+              session={session}
+              removeSession={removeSession}
             />
           ))}
         </Stack>

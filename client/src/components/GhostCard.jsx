@@ -18,7 +18,7 @@ export default function GhostCard(props) {
         ghost: props.ghost,
         user: props.user
       })
-      props.updateUserSession(response)
+      props.addUserSession(response)
     } catch (error) {
       throw error
     }

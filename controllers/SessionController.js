@@ -45,6 +45,7 @@ const CreateSession = async (req, res) => {
 
 const DeleteSession = async (req, res) => {
   try {
+    console.log(req.params)
     await Interaction.deleteMany({ session: req.params.session_id })
     await Session.deleteOne({ _id: req.params.session_id })
     res.send({

@@ -45,6 +45,7 @@ const App = () => {
             <Route path="/lobby" element={<Lobby user={user} />} />
             <Route path="/signin" element={<SignIn setUser={setUser} />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/session" element={<Session user={user} />} />
           </Routes>
         </main>
       </div>
