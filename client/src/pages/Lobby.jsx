@@ -2,14 +2,12 @@ import { useEffect, useState, useRef } from 'react'
 import { ConjureGhosts } from '../services/GhostSevices'
 import { RenderSessions, deleteSession } from '../services/SessionServices'
 import { useNavigate } from 'react-router-dom'
-import { GhostCard, SessionChip } from '../components'
-import { Link } from 'react-router-dom'
+import { GhostCard, SessionChip, CenterDivider } from '../components'
 
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
-import Divider from '@mui/material/Divider'
 import { Container } from '@mui/material'
 import Stack from '@mui/material/Stack'
 
@@ -18,6 +16,7 @@ const Lobby = ({ user }) => {
 
   const [ghosts, setGhosts] = useState([])
   const [userSessions, setUserSessions] = useState([])
+  const [toggleDelete, setToggleDelete] = useState(false)
 
   const addToUserSession = (newSession) => {
     setUserSessions((prevSessions) => [...prevSessions, newSession])
@@ -28,6 +27,7 @@ const Lobby = ({ user }) => {
     setUserSessions((prevSessions) =>
       prevSessions.filter((userSession) => userSession !== deletedSession)
     )
+    setToggleDelete(!toggleDelete)
   }
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Lobby = ({ user }) => {
     }
     handleGhosts()
     handleSessions()
-  }, [userSessions])
+  }, [toggleDelete])
 
   return user ? (
     <>
@@ -63,7 +63,7 @@ const Lobby = ({ user }) => {
             </Grid>
           ))}
         </Grid>
-        <Divider sx={{ marginTop: 4, marginBottom: 4 }}>Your Sessions</Divider>
+        <CenterDivider>Your Sessions</CenterDivider>
         <Stack direction="row" spacing={2} useFlexGap flexWrap="wrap">
           {userSessions.map((session) => (
             <SessionChip
