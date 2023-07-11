@@ -42,7 +42,7 @@ const Lobby = ({ user }) => {
     }
     handleGhosts()
     handleSessions()
-  }, [])
+  }, [userSessions])
 
   return user ? (
     <>

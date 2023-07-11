@@ -1,6 +1,4 @@
 const Session = ({ user }) => {
-  console.log(user)
-
   return (
     <div>
       <h1>test</h1>

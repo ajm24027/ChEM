@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ConjureSession } from '../services/SessionServices'
 import Card from '@mui/material/Card'
@@ -19,6 +18,8 @@ export default function GhostCard(props) {
         user: props.user
       })
       props.addUserSession(response)
+      console.log(response)
+      navigate('/session')
     } catch (error) {
       throw error
     }
