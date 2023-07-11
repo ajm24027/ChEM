@@ -21,7 +21,7 @@ export default function Nav({ user, handleLogOut }) {
         </Button>
 
         <Button color="inherit">
-          <RouterLink href="/" onClick={handleLogOut} underline="none">
+          <RouterLink href="/" onClick={handleLogOut}>
             Log Out
           </RouterLink>
         </Button>

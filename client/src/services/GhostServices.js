@@ -1,6 +1,6 @@
 import Client from './api'
 
-export const ConjureGhosts = async () => {
+export const SummonGhosts = async () => {
   try {
     const res = await Client.get('/ghost')
     return res.data

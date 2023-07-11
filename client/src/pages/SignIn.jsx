@@ -58,7 +58,7 @@ export default function SignIn({ setUser }) {
         password: data.get('password')
       })
       setUser(payload)
-      navigate('/lobby')
+      navigate('/')
     }
   }
 

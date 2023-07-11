@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
 import { Landing, Lobby, Register, Session, SignIn } from './pages'
+import { RenderSessions, deleteSession } from '../src/services/SessionServices'
+import { SummonGhosts } from './services/GhostServices'
 import './App.css'
 import Nav from './components/Nav'
 import { CheckSession } from './services/Auth'
@@ -15,11 +17,19 @@ const darkTheme = createTheme({
 
 const App = () => {
   const [user, setUser] = useState(null)
+  const [loadData, setLoadData] = useState(false)
+  const [ghosts, setGhosts] = useState([])
+  const [userSessions, setUserSessions] = useState([])
+  const [currentSession, setCurrentSession] = useState(null)
+  const [toggleDelete, setToggleDelete] = useState(false)
+  const [dataFetched, setDataFetched] = useState(false)
 
   const handleLogOut = () => {
-    //Reset all auth related state and clear localStorage
+    setGhosts([])
+    setUserSessions([])
     setUser(null)
     localStorage.clear()
+    console.log('Logged Out')
   }
 
   const CheckToken = async () => {
@@ -34,6 +44,32 @@ const App = () => {
     }
   }, [])
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const anchorGhosts = async () => {
+        const data = await SummonGhosts()
+        console.log('Ghosts have been anchored to the digital plane!')
+        console.log(data)
+        setGhosts(data)
+      }
+
+      const arrangeSessions = async () => {
+        const data = await RenderSessions(user.id)
+        console.log('Your sessions are awaiting you in the lobby!')
+        console.log(data)
+        setUserSessions(data)
+      }
+
+      anchorGhosts()
+      arrangeSessions()
+      setDataFetched(true)
+    }
+
+    if (user && !dataFetched) {
+      fetchData()
+    }
+  }, [user, dataFetched])
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
@@ -42,10 +78,25 @@ const App = () => {
         <main>
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/lobby" element={<Lobby user={user} />} />
+            <Route
+              path="/lobby"
+              element={
+                <Lobby
+                  user={user}
+                  ghosts={ghosts}
+                  sessions={userSessions}
+                  setUserSessions={setUserSessions}
+                  setCurrentSession={setCurrentSession}
+                  toggleDelete={toggleDelete}
+                />
+              }
+            />
             <Route path="/signin" element={<SignIn setUser={setUser} />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/session" element={<Session user={user} />} />
+            <Route
+              path="/session"
+              element={<Session currentSession={currentSession} />}
+            />
           </Routes>
         </main>
       </div>
