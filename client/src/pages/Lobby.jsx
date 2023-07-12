@@ -2,9 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GhostCard, SessionChip, CenterDivider } from '../components'
 
-import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
-import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import { Container } from '@mui/material'
 import Stack from '@mui/material/Stack'
@@ -41,34 +39,34 @@ const Lobby = (props) => {
 
   return (
     <>
-      {/* <CssBaseline />
+      <CssBaseline />
       <Container component="main" maxWidth="xl" sx={{ marginTop: 8 }}>
         <Grid
           container
           rowSpacing={{ xs: 1, sm: 2, md: 3 }}
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         >
-          {ghosts.map((ghost) => (
+          {props.ghosts.map((ghost) => (
             <Grid item xs={12} sm={6} md={2} key={ghost.name}>
               <GhostCard
-                user={user}
+                user={props.user}
                 ghost={ghost}
-                addUserSession={addToUserSession}
+                // addUserSession={addToUserSession}
               />
             </Grid>
           ))}
         </Grid>
         <CenterDivider>Your Sessions</CenterDivider>
         <Stack direction="row" spacing={2} useFlexGap flexWrap="wrap">
-          {userSessions.map((session) => (
+          {props.sessions.map((session) => (
             <SessionChip
               key={session._id}
               session={session}
-              removeSession={removeSession}
+              // removeSession={removeSession}
             />
           ))}
         </Stack>
-      </Container> */}
+      </Container>
     </>
   )
 }
