@@ -6,7 +6,8 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
 import { Container } from '@mui/material'
 
-const Session = ({ user }) => {
+const Session = (props) => {
+  console.log(props)
   return (
     <>
       <CssBaseline />

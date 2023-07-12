@@ -68,7 +68,7 @@ const App = () => {
     if (user && !dataFetched) {
       fetchData()
     }
-  }, [user, dataFetched])
+  }, [user, dataFetched, toggleDelete])
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -87,6 +87,7 @@ const App = () => {
                   sessions={userSessions}
                   setUserSessions={setUserSessions}
                   setCurrentSession={setCurrentSession}
+                  setToggleDelete={setToggleDelete}
                   toggleDelete={toggleDelete}
                 />
               }

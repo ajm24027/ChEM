@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GhostCard, SessionChip, CenterDivider } from '../components'
+import { deleteSession } from '../services/SessionServices'
 
 import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
@@ -13,29 +14,16 @@ const Lobby = (props) => {
 
   const addToUserSession = (newSession) => {
     props.setUserSessions((prevSessions) => [...prevSessions, newSession])
+    props.setCurrentSession(newSession)
   }
 
-  // const removeSession = async (deletedSession) => {
-  //   await deleteSession(deletedSession)
-  //   setUserSessions((prevSessions) =>
-  //     prevSessions.filter((userSession) => userSession !== deletedSession)
-  //   )
-  //   setToggleDelete(!toggleDelete)
-  // }
-
-  // useEffect(() => {
-  //   const handleGhosts = async () => {
-  //     const data = await ConjureGhosts()
-  //     setGhosts(data)
-  //   }
-
-  //   const handleSessions = async () => {
-  //     const data = await RenderSessions(user.id)
-  //     setUserSessions(data)
-  //   }
-  //   handleGhosts()
-  //   handleSessions()
-  // }, [toggleDelete])
+  const removeSession = async (deletedSession) => {
+    await deleteSession(deletedSession)
+    props.setUserSessions((prevSessions) =>
+      prevSessions.filter((userSession) => userSession !== deletedSession)
+    )
+    props.setToggleDelete(!toggleDelete)
+  }
 
   return (
     <>
@@ -62,7 +50,7 @@ const Lobby = (props) => {
             <SessionChip
               key={session._id}
               session={session}
-              // removeSession={removeSession}
+              removeSession={removeSession}
             />
           ))}
         </Stack>

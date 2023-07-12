@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ConjureSession } from '../services/SessionServices'
+import { Drake, Elvis, Fran, MarieCurie, Tony, Voldemort } from '../images'
+
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
@@ -10,6 +12,29 @@ import Typography from '@mui/material/Typography'
 
 export default function GhostCard(props) {
   let navigate = useNavigate()
+
+  let portrait
+
+  switch (props.ghost.name) {
+    case 'Drake':
+      portrait = Drake
+      break
+    case 'Elvis':
+      portrait = Elvis
+      break
+    case 'Fran Drescher':
+      portrait = Fran
+      break
+    case 'Marie Curie':
+      portrait = MarieCurie
+      break
+    case 'Anthony Bourdain':
+      portrait = Tony
+      break
+    case 'Lord Voldemort':
+      portrait = Voldemort
+      break
+  }
 
   const handleNewSession = async () => {
     try {
@@ -28,11 +53,11 @@ export default function GhostCard(props) {
   return (
     <Card variant="outlined" sx={{ maxWidth: 345 }}>
       <CardMedia
-        sx={{ height: 140 }}
-        image='"/static/images/cards/contemplative-reptile.jpg"'
+        sx={{ height: 180 }}
+        image={portrait}
         title={props.ghost.name}
       />
-      <CardContent>
+      <CardContent sx={{ height: 100 }}>
         <Typography gutterBottom variant="h5" component="div">
           {props.ghost.name}
         </Typography>
