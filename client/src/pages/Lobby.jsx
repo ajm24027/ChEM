@@ -50,6 +50,8 @@ const Lobby = (props) => {
             <SessionChip
               key={session._id}
               session={session}
+              currentSession={props.currentSession}
+              setCurrentSession={props.setCurrentSession}
               removeSession={removeSession}
               toggleDelete={props.toggleDelete}
             />

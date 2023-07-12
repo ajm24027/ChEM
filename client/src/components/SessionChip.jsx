@@ -5,13 +5,19 @@ import { useNavigate } from 'react-router-dom'
 
 export default function SessionChip(props) {
   let navigate = useNavigate()
+
+  const handleClick = () => {
+    props.setCurrentSession(props.session)
+    navigate('/session')
+  }
+
   return (
     <Stack direction="row" spacing={1}>
       <Chip
         label={props.session.name}
         variant="outlined"
         color="secondary"
-        onClick={() => navigate('/session')}
+        onClick={() => handleClick()}
         onDelete={() => props.removeSession(props.session._id)}
       />
     </Stack>

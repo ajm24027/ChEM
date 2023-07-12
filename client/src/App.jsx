@@ -85,6 +85,7 @@ const App = () => {
                   sessions={userSessions}
                   setUserSessions={setUserSessions}
                   setCurrentSession={setCurrentSession}
+                  currentSession={currentSession}
                   dataFetched={dataFetched}
                   setDataFetched={setDataFetched}
                 />
