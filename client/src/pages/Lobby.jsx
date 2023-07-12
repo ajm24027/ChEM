@@ -9,7 +9,7 @@ import { Container } from '@mui/material'
 import Stack from '@mui/material/Stack'
 
 const Lobby = (props) => {
-  console.log(props)
+  // console.log(props)
   let navigate = useNavigate()
 
   const addToUserSession = (newSession) => {
@@ -17,12 +17,13 @@ const Lobby = (props) => {
     props.setCurrentSession(newSession)
   }
 
-  const removeSession = async (deletedSession) => {
-    await deleteSession(deletedSession)
+  const removeSession = async (deletedSessionId) => {
+    await deleteSession(deletedSessionId)
     props.setUserSessions((prevSessions) =>
-      prevSessions.filter((userSession) => userSession !== deletedSession)
+      prevSessions.filter((userSession) => userSession !== deletedSessionId)
     )
-    props.setToggleDelete(!toggleDelete)
+    // props.setToggleDelete(!props.toggleDelete)
+    props.setDataFetched(!props.dataFetched)
   }
 
   return (
@@ -51,6 +52,7 @@ const Lobby = (props) => {
               key={session._id}
               session={session}
               removeSession={removeSession}
+              toggleDelete={props.toggleDelete}
             />
           ))}
         </Stack>
