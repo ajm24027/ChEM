@@ -11,9 +11,9 @@ const Lobby = (props) => {
   console.log(props)
   let navigate = useNavigate()
 
-  // const addToUserSession = (newSession) => {
-  //   setUserSessions((prevSessions) => [...prevSessions, newSession])
-  // }
+  const addToUserSession = (newSession) => {
+    props.setUserSessions((prevSessions) => [...prevSessions, newSession])
+  }
 
   // const removeSession = async (deletedSession) => {
   //   await deleteSession(deletedSession)
@@ -51,7 +51,7 @@ const Lobby = (props) => {
               <GhostCard
                 user={props.user}
                 ghost={ghost}
-                // addUserSession={addToUserSession}
+                addUserSession={addToUserSession}
               />
             </Grid>
           ))}
