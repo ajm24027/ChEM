@@ -19,6 +19,17 @@ export const RenderSessions = async (data) => {
   }
 }
 
+export const SessionRitual = async (data) => {
+  try {
+    console.log(`The data being passed to SessionRitual is ${data}`)
+    const res = await Client.get(`/session/${data}`)
+    console.log(`The response from SessionRitual is ${res}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
 export const deleteSession = async (data) => {
   try {
     const res = await Client.delete(`/session/${data}`)

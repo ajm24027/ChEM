@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
 import { Landing, Lobby, Register, Session, SignIn } from './pages'
-import { RenderSessions, deleteSession } from '../src/services/SessionServices'
+import { RenderSessions } from './services/SessionServices'
 import { SummonGhosts } from './services/GhostServices'
 import './App.css'
 import Nav from './components/Nav'

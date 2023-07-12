@@ -1,4 +1,3 @@
-import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GhostCard, SessionChip, CenterDivider } from '../components'
 import { deleteSession } from '../services/SessionServices'

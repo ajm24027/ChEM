@@ -7,7 +7,7 @@ export default function SessionChip(props) {
   let navigate = useNavigate()
 
   const handleClick = () => {
-    props.setCurrentSession(props.session)
+    props.setCurrentSession(props.session._id)
     navigate('/session')
   }
 

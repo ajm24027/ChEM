@@ -9,13 +9,12 @@ const GetUsersSessions = async (req, res) => {
   }
 }
 
-const ShowSession = async (req, res) => {
+const ShowUsersSession = async (req, res) => {
   try {
-    const session = await Session.findById(req.params.session_id)
-    const interactions = await Interaction.findById({
-      session: req.params.session_id
+    const session = await Session.findById(req.params.session_id).populate({
+      path: 'owner ghost interactions'
     })
-    res.send({ session, interactions })
+    res.send(session)
   } catch (error) {
     throw error
   }
@@ -34,8 +33,10 @@ const CreateSession = async (req, res) => {
     })
 
     foundGhost.sessions.push(newSession._id)
+    foundUser.sessions.push(newSession._id)
 
     await newSession.save()
+    await foundUser.save()
     await foundGhost.save()
     res.send(newSession)
   } catch (error) {
@@ -73,7 +74,7 @@ const UpdateSession = async (req, res) => {
 
 module.exports = {
   GetUsersSessions,
-  ShowSession,
+  ShowUsersSession,
   CreateSession,
   DeleteSession,
   UpdateSession

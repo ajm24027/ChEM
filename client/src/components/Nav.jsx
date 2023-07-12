@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import { Link as RouterLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export default function Nav({ user, handleLogOut }) {
   let userOptions
@@ -13,17 +13,17 @@ export default function Nav({ user, handleLogOut }) {
     userOptions = (
       <>
         <Button color="inherit">
-          <RouterLink to="/">Home</RouterLink>
+          <NavLink to="/">Home</NavLink>
         </Button>
 
         <Button color="inherit">
-          <RouterLink to="/lobby">Lobby</RouterLink>
+          <NavLink to="/lobby">Lobby</NavLink>
         </Button>
 
         <Button color="inherit">
-          <RouterLink href="/" onClick={handleLogOut}>
+          <NavLink href="/" onClick={handleLogOut}>
             Log Out
-          </RouterLink>
+          </NavLink>
         </Button>
       </>
     )
@@ -32,15 +32,15 @@ export default function Nav({ user, handleLogOut }) {
   const publicOptions = (
     <>
       <Button color="inherit">
-        <RouterLink to="/">Home</RouterLink>
+        <NavLink to="/">Home</NavLink>
       </Button>
 
       <Button color="inherit">
-        <RouterLink to="/signin">Login</RouterLink>
+        <NavLink to="/signin">Login</NavLink>
       </Button>
 
       <Button color="inherit">
-        <RouterLink to="/register">SignUp</RouterLink>
+        <NavLink to="/register">SignUp</NavLink>
       </Button>
     </>
   )
