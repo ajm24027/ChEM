@@ -9,7 +9,6 @@ import { Container } from '@mui/material'
 import Stack from '@mui/material/Stack'
 
 const Lobby = (props) => {
-  // console.log(props)
   let navigate = useNavigate()
 
   const addToUserSession = (newSession) => {
@@ -22,7 +21,6 @@ const Lobby = (props) => {
     props.setUserSessions((prevSessions) =>
       prevSessions.filter((userSession) => userSession !== deletedSessionId)
     )
-    // props.setToggleDelete(!props.toggleDelete)
     props.setDataFetched(!props.dataFetched)
   }
 
@@ -41,6 +39,7 @@ const Lobby = (props) => {
                 user={props.user}
                 ghost={ghost}
                 addUserSession={addToUserSession}
+                setCurrentSession={props.setCurrentSession}
               />
             </Grid>
           ))}

@@ -17,14 +17,10 @@ const darkTheme = createTheme({
 
 const App = () => {
   const [user, setUser] = useState(null)
-  const [loadData, setLoadData] = useState(false)
   const [ghosts, setGhosts] = useState([])
   const [userSessions, setUserSessions] = useState([])
   const [currentSession, setCurrentSession] = useState(null)
-  const [toggleDelete, setToggleDelete] = useState(false)
   const [dataFetched, setDataFetched] = useState(false)
-
-  console.log(toggleDelete, dataFetched)
 
   const handleLogOut = () => {
     setGhosts([])
@@ -70,7 +66,6 @@ const App = () => {
     if (user && !dataFetched) {
       fetchData()
     }
-    // }, [user, dataFetched, toggleDelete])
   }, [user, dataFetched])
 
   return (
@@ -90,10 +85,8 @@ const App = () => {
                   sessions={userSessions}
                   setUserSessions={setUserSessions}
                   setCurrentSession={setCurrentSession}
-                  // setToggleDelete={setToggleDelete}
                   dataFetched={dataFetched}
                   setDataFetched={setDataFetched}
-                  // toggleDelete={toggleDelete}
                 />
               }
             />

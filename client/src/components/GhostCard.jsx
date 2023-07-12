@@ -43,7 +43,7 @@ export default function GhostCard(props) {
         user: props.user
       })
       props.addUserSession(response)
-      console.log(response)
+      props.setCurrentSession(response)
       navigate('/session')
     } catch (error) {
       throw error
