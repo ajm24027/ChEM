@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useState, useRef } from 'react'
 
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/system/Stack'
@@ -9,8 +8,6 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 
 const SessionUserInput = (props) => {
-  const userInputRef = useRef(null)
-
   return (
     <Paper
       noValidate
@@ -21,7 +18,7 @@ const SessionUserInput = (props) => {
       elevation={1}
     >
       <form autoComplete="off" onSubmit={props.handleSubmit}>
-        <Stack direction="row" spacing={2} sx={{ display: 'flex' }}>
+        <Stack direction="row" spacing={2}>
           <Box
             sx={{
               width: '100%',
@@ -30,14 +27,13 @@ const SessionUserInput = (props) => {
           >
             <TextField
               fullWidth
+              required
               label="Send A Message"
-              id="userInput"
               name="userInput"
-              ref={userInputRef}
             />
           </Box>
           <Button
-            sx={{ width: 100, margin: 2, display: 'flex' }}
+            sx={{ width: 100, margin: 2 }}
             variant="outlined"
             color="secondary"
             type="submit"

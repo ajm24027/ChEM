@@ -35,7 +35,9 @@ const Session = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+
     const data = new FormData(event.currentTarget)
+    event.currentTarget.reset()
 
     console.log(data)
   }
