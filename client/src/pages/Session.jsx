@@ -9,10 +9,7 @@ import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper'
-import Stack from '@mui/system/Stack'
-import SendIcon from '@mui/icons-material/Send'
 import { Grid } from '@mui/material'
-import { positions } from '@mui/system'
 
 const Session = (props) => {
   const [user, setUser] = useState([])
@@ -36,7 +33,12 @@ const Session = (props) => {
 
   const drawerWidth = 400
 
-  const date = Date.now().toLocaleString()
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    const data = new FormData(event.currentTarget)
+
+    console.log(data)
+  }
 
   return (
     <Box sx={{ display: 'flex', maxWidth: 1 }}>
@@ -76,53 +78,17 @@ const Session = (props) => {
         </Paper>
       </Drawer>
       {/* Non-Drawer Box */}
-      <Box sx={{ flexGrow: 1, border: '1px solid red', zIndex: '0' }}>
-        <Grid container rowSpacing={3}>
-          <Grid xs={12} sx={{ height: '86vh', overflowY: 'auto', padding: 2 }}>
-            <Typography paragraph sx={{ opacity: 0.7 }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              aliquet pellentesque suscipit. Aliquam vulputate massa vitae
-              pellentesque vehicula. Donec felis metus, commodo a rutrum id,
-              convallis quis ante. Suspendisse maximus neque viverra, efficitur
-              ante eget, ullamcorper ex. Sed dictum purus non magna volutpat,
-              sit amet rhoncus nisl elementum. Cras eget condimentum eros. Sed
-              rhoncus ornare sagittis. Proin in ipsum tempor, vehicula nisl
-              fringilla, ullamcorper neque. Fusce sit amet mollis ipsum. In hac
-              habitasse platea dictumst.{' '}
-            </Typography>
-            <Typography paragraph sx={{ opacity: 0.7 }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              aliquet pellentesque suscipit. Aliquam vulputate massa vitae
-              pellentesque vehicula. Donec felis metus, commodo a rutrum id,
-              convallis quis ante. Suspendisse maximus neque viverra, efficitur
-              ante eget, ullamcorper ex. Sed dictum purus non magna volutpat,
-              sit amet rhoncus nisl elementum. Cras eget condimentum eros. Sed
-              rhoncus ornare sagittis. Proin in ipsum tempor, vehicula nisl
-              fringilla, ullamcorper neque. Fusce sit amet mollis ipsum. In hac
-              habitasse platea dictumst.{' '}
-            </Typography>
-            <Typography paragraph sx={{ opacity: 0.7 }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              aliquet pellentesque suscipit. Aliquam vulputate massa vitae
-              pellentesque vehicula. Donec felis metus, commodo a rutrum id,
-              convallis quis ante. Suspendisse maximus neque viverra, efficitur
-              ante eget, ullamcorper ex. Sed dictum purus non magna volutpat,
-              sit amet rhoncus nisl elementum. Cras eget condimentum eros. Sed
-              rhoncus ornare sagittis. Proin in ipsum tempor, vehicula nisl
-              fringilla, ullamcorper neque. Fusce sit amet mollis ipsum. In hac
-              habitasse platea dictumst.{' '}
-            </Typography>
-            <Typography paragraph sx={{ opacity: 0.7 }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              aliquet pellentesque suscipit. Aliquam vulputate massa vitae
-              pellentesque vehicula. Donec felis metus, commodo a rutrum id,
-              convallis quis ante. Suspendisse maximus neque viverra, efficitur
-              ante eget, ullamcorper ex. Sed dictum purus non magna volutpat,
-              sit amet rhoncus nisl elementum. Cras eget condimentum eros. Sed
-              rhoncus ornare sagittis. Proin in ipsum tempor, vehicula nisl
-              fringilla, ullamcorper neque. Fusce sit amet mollis ipsum. In hac
-              habitasse platea dictumst.{' '}
-            </Typography>
+      <Box sx={{ flexGrow: 1, zIndex: '0' }}>
+        <Grid container>
+          <Grid
+            item
+            xs={12}
+            sx={{
+              height: '83vh',
+              overflowY: 'auto',
+              p: 2
+            }}
+          >
             <Typography paragraph sx={{ opacity: 0.7 }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
               aliquet pellentesque suscipit. Aliquam vulputate massa vitae
@@ -135,9 +101,8 @@ const Session = (props) => {
               habitasse platea dictumst.{' '}
             </Typography>
           </Grid>
-          <Grid xs={12}>
-            {/* Input Form Paper Field */}
-            <SessionUserInput />
+          <Grid item xs={12}>
+            <SessionUserInput handleSubmit={handleSubmit} />
           </Grid>
         </Grid>
       </Box>
