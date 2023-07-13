@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { SessionRitual } from '../services/SessionServices'
-import { GhostCardMin, FullWidthTextField } from '../components'
+import { GhostCardMin, SessionUserInput } from '../components'
 import { Link } from 'react-router-dom'
 
 import Button from '@mui/material/Button'
@@ -70,9 +70,8 @@ const Session = (props) => {
             <br /> - Ghosts may struggle to understand complex context. It's
             better to ask comprehensive questions in large chunks.
             <br />
-            <br /> - The API supporting this experiment has information
-            available only until June 2021. Asking about anything later than
-            that date may lead to incomplete responses.
+            <br /> - Asking about world events after June 2021, may lead to
+            incomplete responses.
           </Typography>
         </Paper>
       </Drawer>
@@ -138,28 +137,7 @@ const Session = (props) => {
           </Grid>
           <Grid xs={12}>
             {/* Input Form Paper Field */}
-            <Paper
-              sx={{
-                position: 'sticky',
-                p: 2
-              }}
-              elevation={1}
-            >
-              <Stack
-                direction="row"
-                spacing={2}
-                sx={{ display: 'flex', border: '1px solid red' }}
-              >
-                <FullWidthTextField />
-                <Button
-                  sx={{ width: 100, margin: 2, display: 'flex' }}
-                  variant="outlined"
-                  color="secondary"
-                >
-                  <SendIcon />
-                </Button>
-              </Stack>
-            </Paper>
+            <SessionUserInput />
           </Grid>
         </Grid>
       </Box>
