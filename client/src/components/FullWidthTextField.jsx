@@ -6,11 +6,11 @@ export default function FullWidthTextField() {
   return (
     <Box
       sx={{
-        width: 500,
+        width: '100%',
         maxWidth: '100%'
       }}
     >
-      <TextField fullWidth label="fullWidth" id="fullWidth" />
+      <TextField fullWidth label="Send A Message" id="fullWidth" />{' '}
     </Box>
   )
 }

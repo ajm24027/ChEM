@@ -46,7 +46,7 @@ export default function Nav({ user, handleLogOut }) {
   )
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, position: 'relative', zIndex: '1000' }}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
