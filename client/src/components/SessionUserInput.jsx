@@ -14,8 +14,7 @@ const SessionUserInput = (props) => {
       sx={{
         position: 'sticky',
         p: 2,
-        m: 2,
-        border: '1px solid yellow'
+        m: 2
       }}
       elevation={1}
     >

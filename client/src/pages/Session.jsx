@@ -3,6 +3,7 @@ import { SessionRitual } from '../services/SessionServices'
 import { ConjureUtterance } from '../services/InteractionServices'
 import { GhostCardMin, SessionUserInput, CenterDivider } from '../components'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -17,6 +18,9 @@ const Session = (props) => {
   const [ghost, setGhost] = useState([])
   const [interactions, setInteractions] = useState([])
   const [dataFetched, setDataFetched] = useState(false)
+
+  console.log(interactions)
+  const createdAtExample = '2023-07-14T14:42:20.029+00:00'
 
   useEffect(() => {
     const beginSessionRitual = async () => {
@@ -38,7 +42,6 @@ const Session = (props) => {
     event.preventDefault()
     const sessionLoc = props.currentSession
     const data = new FormData(event.currentTarget)
-    // const testData = { input: data.get('userInput') }
     event.currentTarget.reset()
     await ConjureUtterance({ input: data.get('userInput') }, sessionLoc)
   }
@@ -83,9 +86,11 @@ const Session = (props) => {
       {/* Non-Drawer Box */}
       <Box
         sx={{
-          zIndex: '0'
+          zIndex: '0',
+          overflow: 'clip'
         }}
       >
+        {/* chat space */}
         <Grid container>
           <Grid
             item
@@ -96,28 +101,41 @@ const Session = (props) => {
               p: 2
             }}
           >
-            <Typography sx={{ p: 2 }}>You said:</Typography>
-            <Paper variant="outlined" sx={{ borderColor: '#ab47bc' }}>
-              <Typography paragraph sx={{ opacity: 0.7, p: 2 }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                aliquet pellentesque suscipit.
-              </Typography>
-            </Paper>
-            <Typography sx={{ p: 2 }}>Anthony Bourdain said:</Typography>
-            <Paper elevation={1}>
-              <Typography paragraph sx={{ opacity: 0.7, p: 2 }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                aliquet pellentesque suscipit. Aliquam vulputate massa vitae
-                pellentesque vehicula. Donec felis metus, commodo a rutrum id,
-                convallis quis ante. Suspendisse maximus neque viverra,
-                efficitur ante eget, ullamcorper ex. Sed dictum purus non magna
-                volutpat, sit amet rhoncus nisl elementum. Cras eget condimentum
-                eros. Sed rhoncus ornare sagittis. Proin in ipsum tempor,
-                vehicula nisl fringilla, ullamcorper neque. Fusce sit amet
-                mollis ipsum. In hac habitasse platea dictumst.{' '}
-              </Typography>
-            </Paper>
+            {interactions.map((interaction) => (
+              <div key={interaction._id}>
+                <Typography sx={{ textAlign: 'right', p: 1.5 }}>
+                  {`${user.username},`}
+                  <small>
+                    {' '}
+                    {moment(`${interaction.createdAt}`).calendar()}
+                  </small>{' '}
+                </Typography>
+                <Paper
+                  elevation={0}
+                  sx={{
+                    backgroundColor: '#ab47bc',
+                    p: 1.5,
+                    width: 'max-content',
+                    display: 'flex',
+                    alignSelf: 'flex-end'
+                  }}
+                >
+                  <p>{interaction.input}</p>
+                </Paper>
+                <p>
+                  {`${ghost.name},`}{' '}
+                  <small>{moment(`${interaction.createdAt}`).calendar()}</small>
+                </p>
+                <Paper
+                  variant="outlined"
+                  sx={{ p: 1.5, maxWidth: 'max-content' }}
+                >
+                  <p>{interaction.response}</p>
+                </Paper>
+              </div>
+            ))}
           </Grid>
+          {/* input field */}
           <Grid item xs={12}>
             <SessionUserInput handleSubmit={handleSubmit} />
           </Grid>
