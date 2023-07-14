@@ -13,7 +13,9 @@ const SessionUserInput = (props) => {
       noValidate
       sx={{
         position: 'sticky',
-        p: 2
+        p: 2,
+        m: 2,
+        border: '1px solid yellow'
       }}
       elevation={1}
     >
@@ -29,6 +31,7 @@ const SessionUserInput = (props) => {
               fullWidth
               required
               label="Send A Message"
+              id="userInput"
               name="userInput"
             />
           </Box>

@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { SessionRitual } from '../services/SessionServices'
-import { GhostCardMin, SessionUserInput } from '../components'
+import { ConjureUtterance } from '../services/InteractionServices'
+import { GhostCardMin, SessionUserInput, CenterDivider } from '../components'
 import { Link } from 'react-router-dom'
 
 import Button from '@mui/material/Button'
@@ -35,11 +36,11 @@ const Session = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
+    const sessionLoc = props.currentSession
     const data = new FormData(event.currentTarget)
+    // const testData = { input: data.get('userInput') }
     event.currentTarget.reset()
-
-    console.log(data)
+    await ConjureUtterance({ input: data.get('userInput') }, sessionLoc)
   }
 
   return (
@@ -80,28 +81,42 @@ const Session = (props) => {
         </Paper>
       </Drawer>
       {/* Non-Drawer Box */}
-      <Box sx={{ flexGrow: 1, zIndex: '0' }}>
+      <Box
+        sx={{
+          zIndex: '0'
+        }}
+      >
         <Grid container>
           <Grid
             item
             xs={12}
             sx={{
-              height: '83vh',
+              height: '80vh',
               overflowY: 'auto',
               p: 2
             }}
           >
-            <Typography paragraph sx={{ opacity: 0.7 }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              aliquet pellentesque suscipit. Aliquam vulputate massa vitae
-              pellentesque vehicula. Donec felis metus, commodo a rutrum id,
-              convallis quis ante. Suspendisse maximus neque viverra, efficitur
-              ante eget, ullamcorper ex. Sed dictum purus non magna volutpat,
-              sit amet rhoncus nisl elementum. Cras eget condimentum eros. Sed
-              rhoncus ornare sagittis. Proin in ipsum tempor, vehicula nisl
-              fringilla, ullamcorper neque. Fusce sit amet mollis ipsum. In hac
-              habitasse platea dictumst.{' '}
-            </Typography>
+            <Typography sx={{ p: 2 }}>You said:</Typography>
+            <Paper variant="outlined" sx={{ borderColor: '#ab47bc' }}>
+              <Typography paragraph sx={{ opacity: 0.7, p: 2 }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                aliquet pellentesque suscipit.
+              </Typography>
+            </Paper>
+            <Typography sx={{ p: 2 }}>Anthony Bourdain said:</Typography>
+            <Paper elevation={1}>
+              <Typography paragraph sx={{ opacity: 0.7, p: 2 }}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                aliquet pellentesque suscipit. Aliquam vulputate massa vitae
+                pellentesque vehicula. Donec felis metus, commodo a rutrum id,
+                convallis quis ante. Suspendisse maximus neque viverra,
+                efficitur ante eget, ullamcorper ex. Sed dictum purus non magna
+                volutpat, sit amet rhoncus nisl elementum. Cras eget condimentum
+                eros. Sed rhoncus ornare sagittis. Proin in ipsum tempor,
+                vehicula nisl fringilla, ullamcorper neque. Fusce sit amet
+                mollis ipsum. In hac habitasse platea dictumst.{' '}
+              </Typography>
+            </Paper>
           </Grid>
           <Grid item xs={12}>
             <SessionUserInput handleSubmit={handleSubmit} />

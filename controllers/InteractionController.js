@@ -15,6 +15,11 @@ const GetInteractions = async (req, res) => {
 
 const CreateInteraction = async (req, res) => {
   try {
+    const input = req.body
+    console.log(req.body)
+
+    console.log(`This is from InteractionController: ${req.params.session_id}`)
+
     const openai = new OpenAIApi(
       new Configuration({
         apiKey: process.env.OAI_API_KEY
@@ -46,7 +51,7 @@ const CreateInteraction = async (req, res) => {
     await session.save()
     res.send(newInteraction)
   } catch (error) {
-    throw error
+    console.log(error)
   }
 }
 
