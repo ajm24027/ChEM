@@ -1,10 +1,8 @@
 import { useEffect, useState, useRef } from 'react'
 import { SessionRitual } from '../services/SessionServices'
 import { ConjureUtterance } from '../services/InteractionServices'
-import { GhostCardMin, SessionUserInput, CenterDivider } from '../components'
+import { GhostCardMin, SessionUserInput, Feed } from '../components'
 import { Link } from 'react-router-dom'
-import moment from 'moment'
-import ScrollableFeed from 'react-scrollable-feed'
 
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -13,10 +11,8 @@ import Drawer from '@mui/material/Drawer'
 import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper'
 import { Grid } from '@mui/material'
-import CircularProgress from '@mui/material/CircularProgress'
 
 const Session = (props) => {
-  const [user, setUser] = useState([])
   const [ghost, setGhost] = useState([])
   const [interactions, setInteractions] = useState([])
   const [dataFetched, setDataFetched] = useState(false)
@@ -25,16 +21,12 @@ const Session = (props) => {
   useEffect(() => {
     const beginSessionRitual = async () => {
       const data = await SessionRitual(props.currentSession)
-      console.log(data)
-      setUser(data.owner)
       setGhost(data.ghost)
       setInteractions(data.interactions)
       setDataFetched(true)
     }
-    if (props.currentSession !== null && !dataFetched) {
-      beginSessionRitual()
-    }
-  }, [dataFetched])
+    beginSessionRitual()
+  }, [])
 
   const drawerWidth = 400
 
@@ -114,54 +106,7 @@ const Session = (props) => {
               p: 2
             }}
           >
-            <ScrollableFeed forceScroll="true">
-              {interactions.map((interaction) => (
-                <div key={interaction._id}>
-                  <Typography
-                    sx={{
-                      textAlign: 'right',
-                      p: 1.5,
-                      marginRight: 2
-                    }}
-                  >
-                    {'You said,'}
-                    <small>
-                      {' '}
-                      {moment(`${interaction.createdAt}`).calendar()}
-                    </small>{' '}
-                  </Typography>
-                  <Paper
-                    elevation={0}
-                    sx={{
-                      backgroundColor: '#ab47bc',
-                      marginRight: 2,
-                      p: 1.5,
-                      width: 'fit-content',
-                      float: 'right'
-                    }}
-                  >
-                    <p>{interaction.input}</p>
-                  </Paper>
-                  <Typography sx={{ clear: 'both', p: 1.5 }}>
-                    {`${ghost.name},`}{' '}
-                    <small>
-                      {moment(`${interaction.createdAt}`).calendar()}
-                    </small>
-                  </Typography>
-                  <Paper
-                    variant="outlined"
-                    sx={{
-                      p: 1.5,
-                      maxWidth: 'max-content',
-                      clear: 'both',
-                      marginRight: 2
-                    }}
-                  >
-                    <p>{interaction.response}</p>
-                  </Paper>
-                </div>
-              ))}
-            </ScrollableFeed>
+            <Feed interactions={interactions} ghost={ghost} />
           </Grid>
           {/* input field */}
           <Grid item xs={12}>
