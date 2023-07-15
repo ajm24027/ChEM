@@ -6,6 +6,7 @@ import SendIcon from '@mui/icons-material/Send'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const SessionUserInput = (props) => {
   return (
