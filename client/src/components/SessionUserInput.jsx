@@ -6,10 +6,11 @@ import SendIcon from '@mui/icons-material/Send'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
-import CircularProgress from '@mui/material/CircularProgress'
 
 const SessionUserInput = (props) => {
-  return (
+  const loadMessage = `${props.ghost.name} is responding to your message`
+
+  return !props.responseLoad ? (
     <Paper
       noValidate
       sx={{
@@ -40,6 +41,44 @@ const SessionUserInput = (props) => {
             variant="outlined"
             color="secondary"
             type="submit"
+          >
+            <SendIcon />
+          </Button>
+        </Stack>
+      </form>
+    </Paper>
+  ) : (
+    <Paper
+      noValidate
+      sx={{
+        position: 'sticky',
+        p: 2,
+        m: 2
+      }}
+      elevation={1}
+    >
+      <form>
+        <Stack direction="row" spacing={2}>
+          <Box
+            sx={{
+              width: '100%',
+              maxWidth: '100%'
+            }}
+          >
+            {' '}
+            <TextField
+              fullWidth
+              required
+              disabled
+              label={loadMessage}
+              id="userInput"
+            />
+          </Box>
+          <Button
+            sx={{ width: 100, margin: 2 }}
+            variant="contained"
+            disabled
+            disableRipple
           >
             <SendIcon />
           </Button>

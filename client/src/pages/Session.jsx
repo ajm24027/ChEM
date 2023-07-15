@@ -32,9 +32,11 @@ const Session = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    setResponseLoad(!responseLoad)
+
     const sessionLoc = props.currentSession
     const data = new FormData(event.currentTarget)
+    console.log(data)
+    setResponseLoad(!responseLoad)
     event.currentTarget.reset()
     const response = await ConjureUtterance(
       { input: data.get('userInput') },
@@ -110,7 +112,11 @@ const Session = (props) => {
           </Grid>
           {/* input field */}
           <Grid item xs={12}>
-            <SessionUserInput handleSubmit={handleSubmit} />
+            <SessionUserInput
+              responseLoad={responseLoad}
+              ghost={ghost}
+              handleSubmit={handleSubmit}
+            />
           </Grid>
         </Grid>
       </Box>
