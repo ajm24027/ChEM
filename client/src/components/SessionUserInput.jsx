@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { TouchBallLoading } from 'react-loadingg'
 
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/system/Stack'
@@ -8,7 +9,7 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 
 const SessionUserInput = (props) => {
-  const loadMessage = `${props.ghost.name} is responding to your message`
+  const loadMessage = `${props.ghost.name} is responding to your message...`
 
   return !props.responseLoad ? (
     <Paper
