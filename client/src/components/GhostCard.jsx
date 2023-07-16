@@ -57,7 +57,7 @@ export default function GhostCard(props) {
         image={portrait}
         title={props.ghost.name}
       />
-      <CardContent sx={{ height: 70 }}>
+      <CardContent sx={{ height: 80 }}>
         <Typography gutterBottom variant="h5" component="div">
           {props.ghost.name}
         </Typography>

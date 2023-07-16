@@ -12,7 +12,7 @@ const GetUsersSessions = async (req, res) => {
 const ShowUsersSession = async (req, res) => {
   try {
     const session = await Session.findById(req.params.session_id).populate({
-      path: 'owner ghost interactions'
+      path: 'name owner ghost interactions'
     })
     res.send(session)
   } catch (error) {
