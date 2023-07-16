@@ -33,7 +33,7 @@ const Lobby = (props) => {
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         >
           {props.ghosts.map((ghost) => (
-            <Grid item xs={12} sm={6} md={2} key={ghost.name}>
+            <Grid item xs={12} sm={6} md={3} key={ghost.name}>
               <GhostCard
                 user={props.user}
                 ghost={ghost}
@@ -44,7 +44,13 @@ const Lobby = (props) => {
           ))}
         </Grid>
         <CenterDivider>Your Sessions</CenterDivider>
-        <Stack direction="row" spacing={2} useFlexGap flexWrap="wrap">
+        <Stack
+          direction="row"
+          spacing={2}
+          useFlexGap
+          flexWrap="wrap"
+          sx={{ marginBottom: 4 }}
+        >
           {props.sessions.map((session) => (
             <SessionChip
               key={session._id}
