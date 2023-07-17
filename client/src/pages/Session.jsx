@@ -1,12 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { SessionRitual } from '../services/SessionServices'
 import { ConjureUtterance } from '../services/InteractionServices'
-import {
-  GhostCardMin,
-  SessionUserInput,
-  Feed,
-  GhostProfile
-} from '../components'
+import { SessionUserInput, Feed, GhostProfile } from '../components'
 import { Link } from 'react-router-dom'
 
 import Button from '@mui/material/Button'
@@ -22,6 +17,7 @@ const Session = (props) => {
   const [sessionName, setSessionName] = useState([])
   const [dataFetched, setDataFetched] = useState(false)
   const [responseLoad, setResponseLoad] = useState(false)
+  const [editSession, setEditSession] = useState(false)
 
   useEffect(() => {
     const beginSessionRitual = async () => {
@@ -74,7 +70,16 @@ const Session = (props) => {
         }}
       >
         <Box sx={{ p: 2 }}>
-          <GhostProfile ghost={ghost} sessionName={sessionName} />
+          <GhostProfile
+            ghost={ghost}
+            sessionName={sessionName}
+            setSessionName={setSessionName}
+            editSession={editSession}
+            setEditSession={setEditSession}
+            currentSession={props.currentSession}
+            setDataFetched={props.setDataFetched}
+            dataFetched={props.dataFetched}
+          />
         </Box>
         <Button
           sx={{ width: 100, margin: 2 }}

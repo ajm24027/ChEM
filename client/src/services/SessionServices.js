@@ -38,3 +38,12 @@ export const deleteSession = async (data) => {
     throw error
   }
 }
+
+export const RenameSession = async (data, sessionLoc) => {
+  try {
+    const res = await Client.put(`/session/${sessionLoc}`, data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

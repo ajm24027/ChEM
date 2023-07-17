@@ -95,7 +95,13 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route
               path="/session"
-              element={<Session currentSession={currentSession} />}
+              element={
+                <Session
+                  currentSession={currentSession}
+                  dataFetched={dataFetched}
+                  setDataFetched={setDataFetched}
+                />
+              }
             />
           </Routes>
         </main>

@@ -33,7 +33,7 @@ export default function feed(props) {
             <p>{interaction.input}</p>
           </Paper>
           <Typography sx={{ clear: 'both', p: 1.5 }}>
-            {`${props.ghost.name},`}{' '}
+            {`${props.ghost.name} said,`}{' '}
             <small>{moment(`${interaction.createdAt}`).calendar()}</small>
           </Typography>
           <Paper
