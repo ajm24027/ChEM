@@ -16,7 +16,8 @@ const SessionUserInput = (props) => {
       sx={{
         position: 'sticky',
         p: 2,
-        m: 2
+        m: 2,
+        backgroundColor: '#0A1929'
       }}
       elevation={1}
     >
@@ -39,7 +40,7 @@ const SessionUserInput = (props) => {
           <Button
             sx={{ width: 100, margin: 2 }}
             variant="outlined"
-            color="secondary"
+            color="primary"
             type="submit"
           >
             <SendIcon />

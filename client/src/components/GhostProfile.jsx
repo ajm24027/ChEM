@@ -65,8 +65,8 @@ export default function GhostProfile(props) {
   }
 
   return (
-    <Paper elevation={1} sx={{ p: 2 }}>
-      <Stack>
+    <Paper elevation={1} sx={{ p: 2, backgroundColor: '#0A1929' }}>
+      <Stack flexItem>
         <Card variant="outlined" sx={{ maxWidth: 365, mb: 2 }}>
           <CardMedia
             sx={{ height: 300 }}
@@ -75,23 +75,32 @@ export default function GhostProfile(props) {
           />
         </Card>
         <Typography variant="h5">{props.ghost.name}</Typography>
-        <Box sx={{ opacity: 0.7, mt: 1 }}>
-          <Typography variant="paragraph">Current Session:</Typography>
+        <Box
+          sx={{
+            opacity: 0.7,
+            mt: 1
+          }}
+        >
           <Stack
             direction="row"
-            spacing={{ xs: 1, sm: 2 }}
-            useFlexGap
-            flexWrap="wrap"
-            sx={{
-              border: '1px green solid'
+            spacing={{
+              xs: 1,
+              sm: 2
             }}
           >
             {!props.editSession ? (
               <>
-                <Typography variant="h6">{props.sessionName}</Typography>
+                <Typography variant="paragraph"></Typography>
+                <Typography
+                  variant="h5"
+                  sx={{ flexGrow: 1, alignSelf: 'center' }}
+                >
+                  {props.sessionName}
+                </Typography>
                 <IconButton
                   aria-label="edit"
-                  size="small"
+                  size="large"
+                  color="primary"
                   onClick={() => setEdit()}
                 >
                   <EditIcon fontSize="inherit" />
@@ -106,24 +115,19 @@ export default function GhostProfile(props) {
                     label="Rename your Session"
                     variant="standard"
                     required
-                    sx={{ width: 200, border: 'solid 1px yellow' }}
+                    sx={{ width: 220 }}
                   />
+                  <IconButton aria-label="save" size="large" type="submit">
+                    <SaveIcon fontSize="inherit" color="success" />
+                  </IconButton>
                   <IconButton
-                    aria-label="save"
-                    size="small"
-                    sx={{ border: '1px solid red' }}
-                    type="submit"
+                    aria-label="close"
+                    size="large"
+                    onClick={() => setEdit()}
                   >
-                    <SaveIcon fontSize="inherit" sx={{ width: '40px' }} />
+                    <UndoIcon fontSize="inherit" color="error" />
                   </IconButton>
                 </form>
-                <IconButton
-                  aria-label="close"
-                  size="small"
-                  onClick={() => setEdit()}
-                >
-                  <UndoIcon fontSize="inherit" sx={{ width: '40px' }} />
-                </IconButton>
               </>
             )}
           </Stack>

@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import { NavLink } from 'react-router-dom'
+import { ChemChatLogo } from '../images'
 
 export default function Nav({ user, handleLogOut }) {
   let userOptions
@@ -46,11 +47,24 @@ export default function Nav({ user, handleLogOut }) {
   )
 
   return (
-    <Box sx={{ flexGrow: 1, position: 'relative', zIndex: '1000' }}>
-      <AppBar position="static">
+    <Box
+      sx={{
+        flexGrow: 1,
+        position: 'relative',
+        zIndex: '1000',
+        backgroundColor: '#0A1929'
+      }}
+    >
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: '#0A1929',
+          borderBottom: '1px solid #1c54b2'
+        }}
+      >
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Chattus Ex Machina
+          <Typography component="div" sx={{ flexGrow: 1 }}>
+            <img src={ChemChatLogo} alt="Chem Chat Logo" className="Logo" />
           </Typography>
           {user ? userOptions : publicOptions}
         </Toolbar>

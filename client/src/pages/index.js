@@ -1,4 +1,4 @@
-import LandingPage from './landing'
+import LandingPage from './Landing'
 import LobbyPage from './Lobby'
 import RegisterPage from './Register'
 import SessionPage from './Session'

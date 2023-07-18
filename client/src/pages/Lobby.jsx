@@ -25,7 +25,6 @@ const Lobby = (props) => {
 
   return (
     <>
-      <CssBaseline />
       <Container component="main" maxWidth="xl" sx={{ marginTop: 8 }}>
         <Grid
           container

@@ -23,7 +23,7 @@ export default function feed(props) {
           <Paper
             elevation={0}
             sx={{
-              backgroundColor: '#ab47bc',
+              backgroundColor: '#1c54b2',
               marginRight: 2,
               p: 1.5,
               width: 'fit-content',
@@ -42,7 +42,9 @@ export default function feed(props) {
               p: 1.5,
               maxWidth: 'max-content',
               clear: 'both',
-              marginRight: 2
+              marginRight: 2,
+              border: '#0288d1 1px solid',
+              backgroundColor: '#001E3C'
             }}
           >
             <p>{interaction.response}</p>

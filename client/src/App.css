@@ -1,8 +1,22 @@
+
+
 body {
   margin: 0;
 }
 
+
 a {
-  color: rgba(255, 255, 255, 0.8);
+  color: #03a9f4;
   text-decoration: none;
+}
+.logo {
+  height: 30px;
+}
+
+.header {
+  height: 100%;
+  width: 100%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border-radius: 4px;
 }

@@ -16,7 +16,7 @@ export default function SessionChip(props) {
       <Chip
         label={props.session.name}
         variant="outlined"
-        color="secondary"
+        color="primary"
         onClick={() => handleClick()}
         onDelete={() => props.removeSession(props.session._id)}
       />

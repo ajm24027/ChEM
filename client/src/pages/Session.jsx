@@ -9,7 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import Typography from '@mui/material/Typography'
-import { Grid } from '@mui/material'
+import { Grid, Paper, Stack } from '@mui/material'
 
 const Session = (props) => {
   const [ghost, setGhost] = useState([])
@@ -54,10 +54,10 @@ const Session = (props) => {
     <Box
       sx={{
         display: 'flex',
-        maxWidth: 1
+        maxWidth: 1,
+        backgroundColor: '#0A1929'
       }}
     >
-      <CssBaseline />
       <Drawer
         variant="permanent"
         sx={{
@@ -65,29 +65,61 @@ const Session = (props) => {
           flexShrink: 0,
           [`& .MuiDrawer-paper`]: {
             width: drawerWidth,
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            borderRight: '1px solid #1c54b2',
+            backgroundColor: '#0A1929'
           }
         }}
       >
-        <Box sx={{ p: 2 }}>
-          <GhostProfile
-            ghost={ghost}
-            sessionName={sessionName}
-            setSessionName={setSessionName}
-            editSession={editSession}
-            setEditSession={setEditSession}
-            currentSession={props.currentSession}
-            setDataFetched={props.setDataFetched}
-            dataFetched={props.dataFetched}
-          />
-        </Box>
-        <Button
-          sx={{ width: 100, margin: 2 }}
-          variant="outlined"
-          color="secondary"
+        <Stack
+          direction={'column'}
+          sx={{
+            display: 'flex',
+            flexGrow: 1,
+            justifyContent: 'space-between'
+          }}
         >
-          <Link to="/lobby">Lobby</Link>
-        </Button>
+          <Box sx={{ p: 2 }}>
+            <GhostProfile
+              ghost={ghost}
+              sessionName={sessionName}
+              setSessionName={setSessionName}
+              editSession={editSession}
+              setEditSession={setEditSession}
+              currentSession={props.currentSession}
+              setDataFetched={props.setDataFetched}
+              dataFetched={props.dataFetched}
+            />
+          </Box>
+          <Paper
+            variant="outlined"
+            sx={{
+              m: 2,
+              p: 2,
+              backgroundColor: '#0A1929',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <Typography variant="h6">Need to come back later?</Typography>
+            <Typography
+              variant="paragraph"
+              sx={{ opacity: '0.7', mt: 2, textAlign: 'center' }}
+            >
+              Feel free to come back anytime. Your sessions are automatically
+              saved for you to pick up right where you left off.
+            </Typography>
+            <Button
+              sx={{ width: 100, margin: 2 }}
+              variant="outlined"
+              color="primary"
+            >
+              <Link to="/lobby">Lobby</Link>
+            </Button>
+          </Paper>
+        </Stack>
       </Drawer>
       {/* Non-Drawer Box */}
       <Box
