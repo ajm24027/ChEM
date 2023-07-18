@@ -9,7 +9,7 @@ const GhostRouter = require('./routes/GhostRouter')
 const SessionRouter = require('./routes/SessionRouter')
 const InteractionRouter = require('./routes/InteractionRouter')
 
-const PORT = process.env.PORT || 3001
+// const PORT = process.env.PORT || 3001
 
 const db = require('./db')
 
