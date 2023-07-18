@@ -1,5 +1,16 @@
 import * as React from 'react'
-import { Drake, Elvis, Fran, MarieCurie, Tony, Voldemort } from '../images'
+import {
+  Drake,
+  Elvis,
+  Fran,
+  MarieCurie,
+  Tony,
+  Voldemort,
+  Bourdain,
+  Hatter,
+  Kobe,
+  Winston
+} from '../images'
 import { RenameSession } from '../services/SessionServices'
 
 import Paper from '@mui/material/Paper'
@@ -30,11 +41,23 @@ export default function GhostProfile(props) {
     case 'Marie Curie':
       portrait = MarieCurie
       break
-    case 'Anthony Bourdain':
+    case 'Tony Soprano':
       portrait = Tony
       break
     case 'Lord Voldemort':
       portrait = Voldemort
+      break
+    case 'Anthony Bourdain':
+      portrait = Bourdain
+      break
+    case 'Mad Hatter':
+      portrait = Hatter
+      break
+    case 'Kobe Bryant':
+      portrait = Kobe
+      break
+    case 'Winston Churchill':
+      portrait = Winston
       break
   }
 
