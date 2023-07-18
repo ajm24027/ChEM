@@ -26,7 +26,12 @@ const Landing = () => {
         }}
       >
         <Box
-          sx={{ flexGrow: 1, border: '#0288d1 1px solid', borderRadius: '4px' }}
+          sx={{
+            flexGrow: 1,
+            border: '#0288d1 1px solid',
+            borderRadius: '4px',
+            mb: 1
+          }}
         >
           <Paper
             elevation={1}
@@ -131,52 +136,50 @@ const Landing = () => {
           </Paper>
         </Box>
 
-        {/* <Grid item id="FeatureSection1" sx={{ width: 1, p: 2 }}>
-            <Typography variant="h4" gutterBottom>
-              Limitless Conversations.
-            </Typography>
-            <Typography variant="paragraph" gutterBottom>
-              Ghosts are more than just simulations—they're captivating, and
-              ready to engage in profound discussions. Have burning questions
-              about the mysteries of the universe? Seek advice from a visionary
-              recording artist. Crave deep philosophical insights? Engage with a
-              renowned physicist. The possibilities are endless, limited only by
-              your curiosity.
-            </Typography>
-          </Grid>
-          <Grid item id="FeatureSection2" sx={{ width: 1, p: 2 }}>
-            <Typography variant="h4" gutterBottom>
-              Short On Time?
-            </Typography>
-            <Typography variant="paragraph" gutterBottom>
-              At ChEM Chat, we value your busy lifestyle and respect your time,
-              which is why you have the freedom to engage at your convenience,
-              with all your conversations saved for later. All of the ghosts
-              eagerly await your return, ready to resume spirited discussions on
-              topics like the Hobbit films or the nuances of a post-capitalist
-              society.
-            </Typography>
-          </Grid>
-          <Grid
-            item
-            id="headerSection"
+        <Box
+          sx={{
+            flexGrow: 1,
+            border: '#0288d1 1px solid',
+            borderRadius: '4px',
+            mt: 2
+          }}
+        >
+          <Paper
+            elevation={1}
             sx={{
-              border: '1px yellow solid',
-              p: 2
+              p: 2,
+              backgroundColor: '#0A1929',
+              marginLeft: 'auto',
+              marginRight: 'auto'
             }}
           >
-            <Typography variant="h4" gutterBottom>
-              Step into captivating discourse.
-            </Typography>
-            <Typography variant="h6" gutterBottom>
-              Sign up today and let Chattus Ex Machina unlock the power of AI
-              conversations for you. Remember, the answers you seek may be just
-              one question away.
-            </Typography>
-            <Button color="primary" variant="contained">
-              <NavLink to="/register">SignUp</NavLink>
-            </Button>
-          </Grid> */}
+            <Stack
+              spacing={2}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <Typography variant="h4">
+                Step into captivating discourse.
+              </Typography>
+              <Typography variant="paragraph" gutterBottom>
+                Sign up today and let Chattus Ex Machina unlock the power of AI
+                conversations for you. Remember, the answers you seek may be
+                just one question away.
+              </Typography>
+              <Button
+                color="primary"
+                variant="outlined"
+                sx={{ width: '200px' }}
+              >
+                <NavLink to="/register">SignUp</NavLink>
+              </Button>
+            </Stack>
+          </Paper>
+        </Box>
       </Container>
     </>
   )
