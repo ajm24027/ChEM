@@ -52,6 +52,12 @@ Leveraging OpenAI's Chat API, Axios, and a MERN stack, ChEM will take user input
 ![](gitimages/Sign-Up.png)
 ![](gitimages/Auth_Home.png)
 ![](gitimages/Session.png)
+![](gitimages/Lobby_Page.png)
+![](gitimages/Session_Dash.png)
+![](gitimages/Session_Page.png)
+![](gitimages/handleSubmit.png)
+![](gitimages/conjureUtterance.png)
+![](gitimages/createInteraction.png)
 
 ---
 
