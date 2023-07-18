@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Landing, Lobby, Register, Session, SignIn } from './pages'
 import { RenderSessions } from './services/SessionServices'
 import { SummonGhosts } from './services/GhostServices'
@@ -16,6 +17,7 @@ const darkTheme = createTheme({
 })
 
 const App = () => {
+  let navigate = useNavigate()
   const [user, setUser] = useState(null)
   const [ghosts, setGhosts] = useState([])
   const [userSessions, setUserSessions] = useState([])
@@ -28,6 +30,7 @@ const App = () => {
     setUser(null)
     localStorage.clear()
     console.log('Logged Out')
+    navigate('/')
   }
 
   const CheckToken = async () => {
