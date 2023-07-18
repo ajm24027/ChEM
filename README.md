@@ -4,7 +4,7 @@
 
 ### By: Anthony Medina
 
-[GitHub](https://github.com/ajm24027) | [LinkedIn](https://www.linkedin.com/in/anthonyjmedina/) | [Trello](https://trello.com/b/WKPfCzCs/chem) | [Portfolio](https://www.anthonyjmedina.com/)
+[Live Site](http://chemchat.surge.sh/) | [GitHub](https://github.com/ajm24027) | [LinkedIn](https://www.linkedin.com/in/anthonyjmedina/) | [Trello](https://trello.com/b/WKPfCzCs/chem) | [Portfolio](https://www.anthonyjmedina.com/)
 
 ---
 
@@ -20,26 +20,27 @@ Leveraging OpenAI's Chat API, Axios, and a MERN stack, ChEM will take user input
 
 ### **_Technologies_**
 
-- Adobe Photoshop
-- Adobe Illustrator
+- JWT
 - [OpenAI Chat API](https://platform.openai.com/docs/api-reference/chat)
 - Express
 - NodeJS
+- [Material UI](https://mui.com/)
 - [React](https://react.dev/)
 - HTML
+- CSS
 - MongoDB
 - Mongoose
-- CSS
 - [Axios](https://axios-http.com/)
 
 ---
 
 ### **_Features_**
 
-- Authenticate yourself.
-- Start a new session with various Ghosts.
-- Leave your session? Sessions are saved for you for you to return to.
-- Delete a session that got a little cringy.
+- Users have the ability to Authenticate themselves.
+- Each user will have access to a menagerie of AI personalities (or "Ghosts").
+- Each user can start an unlimited number of unique chat sessions with any ghost, where they can ask various questions, and indulge in curious and often times delightful and hilarious conversations with the ghosts.
+- Sessions are saved automatically for users for them to have the option to leave and come back anytime they want to.
+- Users have the ability to rename notable sessions, or delete a session if for some reason it gets too cringy. 
 
 ---
 
@@ -69,5 +70,3 @@ Ghosts
 2. [ x ] Differentiate official Ghosts with User-made Ghosts.
 
 ---
-
-### **_Credits_**
