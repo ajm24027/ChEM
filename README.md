@@ -10,11 +10,11 @@
 
 ### **_Description_**
 
-There's that question that people will sometimes ask at a party, "If you could have dinner with 5 person, living or dead, who would it be?"
+Introducing Chattus Ex Machina (ChEM), a chatbot app inspired by the phrase "DEUS EX MACHINA" or "The Ghost in the Machine." ChEM brings various personalities or "Ghosts" to users, enabling interactive conversations with them.
 
-A play off of the phrase, "DEUS EX MACHNIA", or "The Ghost in the Machine", Chattus Ex Machina (ChEM), is a chatbot app that aims the bring 5 various personalities or Ghosts to a user. And allow users to interact with these Ghosts.
+In the Lobby, users have the option to start new conversations with different Ghosts, including those they haven't spoken to before. They can also resume previously saved sessions from where they left off.
 
-Leveraging OpenAI's Chat API, Axios, and a MERN stack, ChEM will take user input, send it to OpenAI, where the API will respond to the user with predefined context in memory. Suddenly, having the ability to ask Drake "What is the meaning of life?" isn't reserved for super fans or the ultrawealthy.
+Within each session, users can rename their session to remember memorable dialogues. Notable features include real-time feedback that informs the user when the Ghost is responding to their latest input. Additionally, ChEM utilizes a useful React package called Scrollable Feed, which automatically renders a scrolling animation to the latest message in the conversation.
 
 ---
 
