@@ -1,4 +1,4 @@
-# Chattus Ex Machina
+# Chattus Ex Machina (ChemChat)
 
 ## Date: 07/07/2023
 
