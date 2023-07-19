@@ -1,7 +1,6 @@
 import Client from './api'
 
 export const ConjureSession = async (data) => {
-  console.log(data)
   try {
     const res = await Client.post('/session/create', data)
     return res.data
@@ -21,9 +20,7 @@ export const RenderSessions = async (data) => {
 
 export const SessionRitual = async (data) => {
   try {
-    console.log(`The data being passed to SessionRitual is ${data}`)
     const res = await Client.get(`/session/${data}`)
-    console.log(`The response from SessionRitual is ${res}`)
     return res.data
   } catch (error) {
     throw error

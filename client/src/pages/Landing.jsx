@@ -1,18 +1,12 @@
-import { useNavigate } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import { header } from '../images'
 
-import CssBaseline from '@mui/material/CssBaseline'
-import Grid from '@mui/material/Grid'
 import { Container } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
-import Toolbar from '@mui/material/Toolbar'
 import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import CardMedia from '@mui/material/CardMedia'
 
 const Landing = () => {
   return (

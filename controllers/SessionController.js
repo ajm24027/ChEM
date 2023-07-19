@@ -62,7 +62,6 @@ const DeleteSession = async (req, res) => {
 const UpdateSession = async (req, res) => {
   try {
     const name = req.body
-    // console.log(req.body, req.params.session_id)
     const session = await Session.findByIdAndUpdate(
       req.params.session_id,
       req.body,

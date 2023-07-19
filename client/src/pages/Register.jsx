@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
-import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
 import Link from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
@@ -14,12 +13,6 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Alert from '@mui/material/Alert'
 import { RegisterUser } from '../services/Auth'
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark'
-  }
-})
 
 function Portfolio(props) {
   return (

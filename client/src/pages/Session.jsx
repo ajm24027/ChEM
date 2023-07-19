@@ -37,7 +37,6 @@ const Session = (props) => {
 
     const sessionLoc = props.currentSession
     const data = new FormData(event.currentTarget)
-    console.log(data)
     setResponseLoad(!responseLoad)
     event.currentTarget.reset()
     const response = await ConjureUtterance(
