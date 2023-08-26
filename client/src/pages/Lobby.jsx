@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom'
 import { GhostCard, SessionChip, CenterDivider } from '../components'
 import { deleteSession } from '../services/SessionServices'
 
-import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
 import { Container } from '@mui/material'
 import Stack from '@mui/material/Stack'

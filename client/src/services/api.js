@@ -1,8 +1,6 @@
 import Axios from 'axios'
 
-// export const BASE_URL = 'http://localhost:3001'
-// export const BASE_URL = 'https://chemchat-815dea929d70.herokuapp.com/:3001'
-export const BASE_URL = 'https://chemchat-815dea929d70.herokuapp.com/'
+export const BASE_URL = 'http://localhost:3001/'
 
 const Client = Axios.create({ baseURL: BASE_URL })
 

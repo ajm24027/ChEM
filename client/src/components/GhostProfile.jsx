@@ -69,13 +69,11 @@ export default function GhostProfile(props) {
     event.preventDefault()
     const sessionLoc = props.currentSession
     const data = new FormData(event.currentTarget)
-    // console.log(sessionLoc, data)
     event.currentTarget.reset()
     const response = await RenameSession(
       { name: data.get('sessionName') },
       sessionLoc
     )
-    console.log(response)
     if (response) {
       props.setSessionName(response.name)
       props.setDataFetched(!props.dataFetched)
