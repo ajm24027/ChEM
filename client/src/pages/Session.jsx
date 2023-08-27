@@ -41,7 +41,21 @@ const Session = (props) => {
     </>
   )
 
-  const littleDrawer = 300
+  const littleDrawer = (
+    <Paper
+      noValidate
+      sx={{
+        position: 'sticky',
+        p: 1,
+        m: 2,
+        marginBottom: 0,
+        backgroundColor: '#0A1929'
+      }}
+      elevation={1}
+    >
+      <Typography variant="h4">{sessionName}</Typography>
+    </Paper>
+  )
 
   const bigDrawer = (
     <>
@@ -159,14 +173,14 @@ const Session = (props) => {
         >
           {/* chat space */}
           <Grid item sx={{ display: { xs: 'block', sm: 'none' } }}>
-            <Typography>Test</Typography>
+            {littleDrawer}
           </Grid>
           <Grid container rowGap={2}>
             <Grid
               item
               xs={12}
               sx={{
-                height: isSmallScreen ? '76vh' : '79vh',
+                height: isSmallScreen ? '72vh' : '79vh',
                 overflowY: 'none',
                 p: 2
               }}
