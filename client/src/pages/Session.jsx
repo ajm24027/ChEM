@@ -42,19 +42,16 @@ const Session = (props) => {
   )
 
   const littleDrawer = (
-    <Paper
-      noValidate
-      sx={{
-        position: 'sticky',
-        p: 1,
-        m: 2,
-        marginBottom: 0,
-        backgroundColor: '#0A1929'
-      }}
-      elevation={1}
-    >
-      <Typography variant="h4">{sessionName}</Typography>
-    </Paper>
+    <GhostProfile
+      ghost={ghost}
+      sessionName={sessionName}
+      setSessionName={setSessionName}
+      editSession={editSession}
+      setEditSession={setEditSession}
+      currentSession={props.currentSession}
+      setDataFetched={props.setDataFetched}
+      dataFetched={props.dataFetched}
+    />
   )
 
   const bigDrawer = (
@@ -171,16 +168,17 @@ const Session = (props) => {
             width: 1
           }}
         >
-          {/* chat space */}
           <Grid item sx={{ display: { xs: 'block', sm: 'none' } }}>
             {littleDrawer}
           </Grid>
+
+          {/* chat space */}
           <Grid container rowGap={2}>
             <Grid
               item
               xs={12}
               sx={{
-                height: isSmallScreen ? '72vh' : '79vh',
+                height: isSmallScreen ? '67vh' : '79vh',
                 overflowY: 'none',
                 p: 2
               }}
