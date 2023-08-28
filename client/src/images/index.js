@@ -10,6 +10,7 @@ import GhostKobeImg from './Ghost_Kobe.png'
 import GhostWinstonImg from './Ghost_Winston.png'
 import ChemChatLogoImg from './ChemChatLogo.png'
 import GhostHeaderImg from './ghost-header.png'
+import homepageHeaderImg from './homepageHeader.png'
 
 export const Drake = GhostDrakeImg
 export const Winston = GhostWinstonImg
@@ -23,3 +24,4 @@ export const Voldemort = GhostVoldemortImg
 export const Hatter = GhostHatterImg
 export const ChemChatLogo = ChemChatLogoImg
 export const header = GhostHeaderImg
+export const homepageHeader = homepageHeaderImg

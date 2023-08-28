@@ -78,7 +78,7 @@ const App = () => {
         <Nav user={user} handleLogOut={handleLogOut} />
         <main>
           <Routes>
-            <Route path="/" element={<Landing />} />
+            <Route path="/" element={<Landing ghosts={ghosts} />} />
             <Route
               path="/lobby"
               element={

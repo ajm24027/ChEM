@@ -74,7 +74,7 @@ export default function GhostCard(props) {
   }
 
   return (
-    <Card variant="outlined" sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 220 }}
         image={portrait}
