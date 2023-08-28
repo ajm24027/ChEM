@@ -27,6 +27,7 @@ const Landing = ({ ghosts }) => {
       container
       rowSpacing={{ xs: 1, sm: 2, md: 3 }}
       columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+      sx={{ alignSelf: 'center' }}
     >
       {ghosts.map((ghost) => {
         let portrait
@@ -68,7 +69,7 @@ const Landing = ({ ghosts }) => {
           <Grid item xs={12} sm={6} md={3} key={ghost.name}>
             <Avatar
               variant="square"
-              sx={{ width: 300, height: 300, borderRadius: 4 }}
+              sx={{ width: '100%', height: 300, borderRadius: 4 }}
             >
               <Image src={portrait} />
             </Avatar>
@@ -126,7 +127,6 @@ const Landing = ({ ghosts }) => {
             Speak to any of your favorite personalities and get realistic
             responses
           </Typography>
-
           {ghostMap}
         </Stack>
       </Container>
