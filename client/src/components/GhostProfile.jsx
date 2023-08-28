@@ -1,4 +1,3 @@
-import * as React from 'react'
 import {
   Drake,
   Elvis,
@@ -24,6 +23,7 @@ import EditIcon from '@mui/icons-material/Edit'
 import TextField from '@mui/material/TextField'
 import UndoIcon from '@mui/icons-material/Undo'
 import SaveIcon from '@mui/icons-material/Save'
+import { useMediaQuery } from '@mui/material'
 
 export default function GhostProfile(props) {
   let portrait
@@ -69,13 +69,11 @@ export default function GhostProfile(props) {
     event.preventDefault()
     const sessionLoc = props.currentSession
     const data = new FormData(event.currentTarget)
-    // console.log(sessionLoc, data)
     event.currentTarget.reset()
     const response = await RenameSession(
       { name: data.get('sessionName') },
       sessionLoc
     )
-    console.log(response)
     if (response) {
       props.setSessionName(response.name)
       props.setDataFetched(!props.dataFetched)
@@ -87,7 +85,9 @@ export default function GhostProfile(props) {
     props.setEdit(props.editSession)
   }
 
-  return (
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'))
+
+  const bigProfileCard = (
     <Paper elevation={1} sx={{ p: 2, backgroundColor: '#0A1929' }}>
       <Stack flexItem>
         <Card variant="outlined" sx={{ maxWidth: 365, mb: 2 }}>
@@ -158,4 +158,63 @@ export default function GhostProfile(props) {
       </Stack>
     </Paper>
   )
+
+  const littleProfileCard = (
+    <>
+      <Paper elevation={1} sx={{ p: 2, backgroundColor: '#0A1929' }}>
+        <Stack
+          direction="row"
+          spacing={{
+            xs: 1,
+            sm: 2
+          }}
+        >
+          {!props.editSession ? (
+            <>
+              <Typography variant="paragraph"></Typography>
+              <Typography
+                variant="h5"
+                sx={{ flexGrow: 1, alignSelf: 'center' }}
+              >
+                {props.sessionName}
+              </Typography>
+              <IconButton
+                aria-label="edit"
+                size="large"
+                color="primary"
+                onClick={() => setEdit()}
+              >
+                <EditIcon fontSize="inherit" />
+              </IconButton>
+            </>
+          ) : (
+            <>
+              <form autoComplete="off" onSubmit={handleSave}>
+                <TextField
+                  id="sessionName"
+                  name="sessionName"
+                  label="Rename your Session"
+                  variant="standard"
+                  required
+                  sx={{ width: 220 }}
+                />
+                <IconButton aria-label="save" size="large" type="submit">
+                  <SaveIcon fontSize="inherit" color="success" />
+                </IconButton>
+                <IconButton
+                  aria-label="close"
+                  size="large"
+                  onClick={() => setEdit()}
+                >
+                  <UndoIcon fontSize="inherit" color="error" />
+                </IconButton>
+              </form>
+            </>
+          )}
+        </Stack>
+      </Paper>
+    </>
+  )
+
+  return isSmallScreen ? littleProfileCard : bigProfileCard
 }
